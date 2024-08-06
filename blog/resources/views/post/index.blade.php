@@ -1,13 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravek 11 - Post</title>
+@extends('layout.app')
 
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+<!-- section for yield -->
+<!-- En una sola linea -->
+ <!-- Contenido variable unico -->
+@section('title', 'Laravel 11 - Post Dinamic')
+
+<!-- push for stack  -->
+<!-- diff con section: push se van sumando -->
+@push('css')
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+    </style>
+@endpush
+
+@section('content')
     <div class="max-w-2xl mx-auto px-4">
         <h1>Post - This is the posts page</h1>
 
@@ -18,5 +26,14 @@
             Contenido de la alerta variable, post
         </x-alert>
     </div>
-</body>
-</html>
+@endsection
+
+@push('css')
+    <style>
+        body {
+            color: orange;
+        }
+    </style>
+@endpush
+
+
