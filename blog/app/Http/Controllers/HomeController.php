@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     //Para pasar solo la clase por default
     public function __invoke() {
-        return "Welcome to me page";
+        return view('home');
     }
 
     public function indexLaravel() {
