@@ -7,15 +7,16 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index() {
-        return "This is the posts page";
+        return view('post.index');
     }
 
     public function create() {
-        return "This is the create post page";
+        return view('post.create');
     }
 
-    public function getPost($id) {
-        return "This is the post with id: $id";
+    public function show($id) {
+        // compact('id'); igual a: ['id' => $id]
+        return view('post.show', compact('id'));
     }
 
     public function getCategoryPost($id, $category) {
