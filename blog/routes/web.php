@@ -19,6 +19,7 @@ Route::get('/api/setPostApi', [ApiPostController::class, 'createPost']);
 Route::get('/api/getAllPost', [ApiPostController::class, 'getAllPost']);
 Route::get('/api/searchPostId/{id}', [ApiPostController::class, 'searchPostId']);
 Route::get('/api/updatePostForId/{id}', [ApiPostController::class, 'updatePostForId']);
+Route::get('/api/getPostForIdPublished/{id}', [ApiPostController::class, 'getPostForIdPublished']);
 Route::get('/api/updatePostForCreateAt/{created}', [ApiPostController::class, 'updatePostForCreateAt']);
 Route::get('/api/updatePostForIdMayorAt/{id}', [ApiPostController::class, 'updatePostForIdMayorAt']);
 Route::get('/api/orderById', [ApiPostController::class, 'orderById']);
