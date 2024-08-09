@@ -10,7 +10,7 @@ class ApiPostController extends Controller
 {
     public function createPost() {
         $post = new Post();
-        $post->title = 'La Hiliada';
+        $post->title = 'LA HIlIAdA';
         $post->content = 'La hiliada es una obra lit...';
         $post->category = 'Literatura';
         $post->save();
