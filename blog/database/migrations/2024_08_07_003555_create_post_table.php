@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->boolean('is_active')->default(true);
 
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->useCurrent();
 
             $table->timestamps();
         });
