@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 
-use function Laravel\Prompts\select;
-
 class ApiPostController extends Controller
 {
     public function createPost() {
@@ -13,6 +11,8 @@ class ApiPostController extends Controller
         $post->title = 'LA HIlIAdA';
         $post->content = 'La hiliada es una obra lit...';
         $post->category = 'Literatura';
+        $post->is_active = true;
+        $post->published_at = '2024-08-09 04:58:52';
         $post->save();
         return response()->json([
             'message' => 'Post created successfully',
@@ -41,9 +41,19 @@ class ApiPostController extends Controller
         $post->title = 'La Hiliada 2';
         $post->content = 'La hiliada es una obra lit... 2';
         $post->category = 'Literatura 2';
+        $post->is_active = true;
+        $post->published_at = '2024-08-09 04:58:52';
         $post->save();
         return response()->json([
             'message' => 'Post update successfully',
+            'post' => $post
+        ], 201);
+    }
+
+    public function getPostForIdPublished($id) {
+        $post = Post::find($id)->published_at->format('Y-m-d');
+        return response()->json([
+            'message' => 'Post published_at successfully',
             'post' => $post
         ], 201);
     }
@@ -61,6 +71,8 @@ class ApiPostController extends Controller
         $post->title = 'La Hiliada 3';
         $post->content = 'La hiliada es una obra lit... 3';
         $post->category = 'Literatura 3';
+        $post->is_active = true;
+        $post->published_at = '2024-08-09 04:58:52';
         $post->save();
         return response()->json([
             'message' => 'Post update successfully',

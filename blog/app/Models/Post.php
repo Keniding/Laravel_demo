@@ -29,7 +29,17 @@ class Post extends Model
     //     );
     // }
 
-    public function title(): Attribute {
+    protected function casts(): array {
+        return [
+            'title' => 'string',
+            'content' => 'string',
+            'category' => 'string',
+            'published_at' => 'datetime',
+            'is_active' => 'boolean'
+            ];
+    }
+
+    protected function title(): Attribute {
         return Attribute::make(
             set: fn ($value) => strtolower($value),
             get: fn ($value) => ucfirst($value)
