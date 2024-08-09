@@ -41,7 +41,7 @@ class Post extends Model
 
     protected function title(): Attribute {
         return Attribute::make(
-            set: fn ($value) => strtolower($value),
+            set: fn ($value) => strtoupper($value),
             get: fn ($value) => ucfirst($value)
         );
     }
