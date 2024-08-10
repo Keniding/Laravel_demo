@@ -1,15 +1,16 @@
 <x-app-layout>
     <style>
-        .container-form {
+        .container-edit {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
         }
 
-        .container-form h2 {
+        .container-edit h2 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
@@ -36,14 +37,14 @@
         }
 
         .form-control:focus {
-            border-color: #4CAF50;
+            border-color: #007BFF;
             outline: none;
         }
 
         .btn-primary {
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #007BFF;
             border: none;
             border-radius: 4px;
             color: white;
@@ -53,64 +54,56 @@
         }
 
         .btn-primary:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
     </style>
 
-    <div class="max-w-2xl mx-auto px-4">
-        <h1>Post - This is the create post page</h1>
-
-        <x-alert-depende type="danger" class="mb-4">
-            <x-slot name="title">
-                Titulo/home
-            </x-slot>
-            Contenido de la alerta variable, home
-        </x-alert-depende>
-        <p>Hello world</p>
-    </div>
-
-    <div class="container-form">
-        <a href="posts/">Volver</a>
-        <form action="postStore" method="POST">
-
+    <div class="container-edit">
+    <a href="../../posts">Volver</a>
+        <h2>Edit Post</h2>
+        <form action="../../postUpdate/{{$post->id}}" method="POST">
             @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <div id="id" name="id" class="form-control"">{{ $post->id }}</div>
+            </div>
 
             <!-- Campo para el título -->
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" class="form-control" required>
+                <input type="text" id="title" name="title" class="form-control" value="{{ $post->title }}" required>
             </div>
 
             <!-- Campo para el contenido -->
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
+                <textarea id="content" name="content" class="form-control" rows="5" required>{{ $post->content }}</textarea>
             </div>
 
             <!-- Campo para la categoría -->
             <div class="form-group">
                 <label for="category">Category</label>
-                <input type="text" id="category" name="category" class="form-control" required>
+                <input type="text" id="category" name="category" class="form-control" value="{{ $post->category }}" required>
             </div>
 
             <!-- Campo para la fecha de publicación -->
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="published_at">Published At</label>
-                <input type="datetime-local" id="published_at" name="published_at" class="form-control" required>
-            </div> -->
+                <input type="datetime-local" id="published_at" name="published_at" class="form-control" value="{{ $post->published_at->format('Y-m-d\TH:i') }}" required>
+            </div>
 
             <!-- Campo para el estado activo -->
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="is_active">Is Active</label>
                 <select id="is_active" name="is_active" class="form-control" required>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+                    <option value="1" {{ $post->is_active ? 'selected' : '' }}>Yes</option>
+                    <option value="0" {{ !$post->is_active ? 'selected' : '' }}>No</option>
                 </select>
-            </div> -->
+            </div>
 
             <!-- Botón para enviar el formulario -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
-
 </x-app-layout>

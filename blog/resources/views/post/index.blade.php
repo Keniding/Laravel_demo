@@ -1,39 +1,111 @@
-@extends('layout.app')
-
-<!-- section for yield -->
-<!-- En una sola linea -->
- <!-- Contenido variable unico -->
-@section('title', 'Laravel 11 - Post Dinamic')
-
-<!-- push for stack  -->
-<!-- diff con section: push se van sumando -->
-@push('css')
-    <style>
+<x-app-layout>
+<style>
+        /* Estilos generales */
         body {
-            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+
+        /* Estilos para botones de acción */
+        .actions a {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .actions a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
         }
     </style>
-@endpush
 
-@section('content')
-    <div class="max-w-2xl mx-auto px-4">
+    <div>
+        <div class="create">
+            <a href="post/">Crear usuario</a>
+        </div>
+
         <h1>Post - This is the posts page</h1>
 
-        <x-alert type="warning">
-            <x-slot name="title">
-                Titulo/post
-            </x-slot>
-            Contenido de la alerta variable, post
-        </x-alert>
+        <table>
+            <thead>
+                <th>Post ID</th>
+                <th>Post Title</th>
+                <th>Post Content</th>
+                <th>Category</th>
+                <th>Post Date</th>
+                <th>Activity</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                    @foreach ($posts as $post)
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td><a href="post/{{$post->id}}">{{ $post->title }}</a></td>
+                            <td>{{ $post->content }}</td>
+                            <td>{{ $post->category }}</td>
+                            <td>{{ $post->published_at }}</td>
+                            <td>{{ $post->is_active ? 'SI' : 'NO' }}</td>
+                            <td>
+                                <a href="post/{{$post->id}}/edit">Edit</a>
+                                <form action="postDelete/{{$post->id}}" method="post">
+                                    @csrf
+                                    @method('Delete')
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+            </tbody>
+        </table>
     </div>
-@endsection
-
-@push('css')
-    <style>
-        body {
-            color: orange;
-        }
-    </style>
-@endpush
-
-
+</x-app-layout>
