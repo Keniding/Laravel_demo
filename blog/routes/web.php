@@ -9,11 +9,15 @@ Route::get('/', HomeController::class);
 Route::get('/laravel', [HomeController::class, 'indexLaravel']);
 
 Route::get('/posts', [PostController::class, 'index']);
+Route::get('/postsPrueba', [PostController::class, 'indexPrueba']);
 Route::get('/post', [PostController::class, 'create']);
 Route::get('/post/{id}', [PostController::class, 'show']);
+Route::get('/post/{id}/edit', [PostController::class, 'update']);
 Route::get('/post/{id}/{category}', [PostController::class, 'getCategoryPost']);
 Route::get('/post/{id}/{category}/{position}', [PostController::class, 'getPostOptional']);
-Route::post('/post', [PostController::class, 'postCreate']);
+Route::post('/postStore', [PostController::class, 'store']);
+Route::put('/postUpdate/{post}', [PostController::class, 'postUpdate']);
+Route::delete('/postDelete/{post}', [PostController::class, 'postDelete']);
 
 Route::get('/api/setPostApi', [ApiPostController::class, 'createPost']);
 Route::get('/api/getAllPost', [ApiPostController::class, 'getAllPost']);
