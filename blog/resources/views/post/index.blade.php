@@ -71,7 +71,7 @@
 
     <div>
         <div class="create">
-            <a href="post/">Crear usuario</a>
+            <a href="{{ route('post.create') }}">Crear usuario</a>
         </div>
 
         <h1>Post - This is the posts page</h1>
@@ -90,14 +90,17 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td>{{ $post->id }}</td>
-                        <td><a href="post/{{$post->id}}">{{ $post->title }}</a></td>
+                        <!-- "{{ route('post.show', $post->id) }}" (ruta con nombre) === post/{{$post->id}} -->
+                        <td><a href=" {{ route('post.show', $post->id) }} ">{{ $post->title }}</a></td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->category }}</td>
                         <td>{{ $post->published_at }}</td>
                         <td>{{ $post->is_active ? 'SI' : 'NO' }}</td>
                         <td>
-                            <a href="post/{{$post->id}}/edit">Edit</a>
-                            <form action="postDelete/{{$post->id}}" method="post">
+                        <!-- post/{{$post->id}}/edit === {{ route('post.update', $post->id) }}  -->
+                            <a href=" {{ route('post.update', $post->id) }} ">Edit</a>
+                            <!-- postDelete/{{$post->id}} === {{ route('postDelete.postDelete', $post->id) }} -->
+                            <form action="{{ route('postDelete.postDelete', $post->id) }}" method="post">
                                 @csrf
                                 @method('Delete')
                                 <button type="submit">Delete</button>

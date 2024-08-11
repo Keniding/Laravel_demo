@@ -59,9 +59,9 @@
     </style>
 
     <div class="container-edit">
-    <a href="../../posts">Volver</a>
+    <a href="{{ route('posts.index') }}">Volver</a>
         <h2>Edit Post</h2>
-        <form action="../../postUpdate/{{$post->id}}" method="POST">
+        <form action="{{ route('postUpdate.postUpdate', $post->id) }}" method="POST">
             @csrf
             @method('PUT')
 

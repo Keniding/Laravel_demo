@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index() {
         // $posts = Post::all();
         // $posts = Post::orderBy('id', 'desc')->get();
-        $posts = Post::orderBy('id', 'asc')->paginate(6); // default 15 primeras paginas, para la next page: ?page=2
+        $posts = Post::orderBy('id', 'desc')->paginate(6); // default 15 primeras paginas, para la next page: ?page=2
         return view('post.index', compact('posts'));
     }
 
