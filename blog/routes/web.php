@@ -8,16 +8,16 @@ use App\Http\Controllers\PostController;
 Route::get('/', HomeController::class);
 Route::get('/laravel', [HomeController::class, 'indexLaravel']);
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/postsPrueba', [PostController::class, 'indexPrueba']);
-Route::get('/post', [PostController::class, 'create']);
-Route::get('/post/{id}', [PostController::class, 'show']);
-Route::get('/post/{id}/edit', [PostController::class, 'update']);
-Route::get('/post/{id}/{category}', [PostController::class, 'getCategoryPost']);
-Route::get('/post/{id}/{category}/{position}', [PostController::class, 'getPostOptional']);
-Route::post('/postStore', [PostController::class, 'store']);
-Route::put('/postUpdate/{post}', [PostController::class, 'postUpdate']);
-Route::delete('/postDelete/{post}', [PostController::class, 'postDelete']);
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/postsPrueba', [PostController::class, 'indexPrueba'])->name('postsPrueba.indexPrueba');
+Route::get('/post', [PostController::class, 'create'])->name('post.create');
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+Route::get('/post/{id}/edit', [PostController::class, 'update'])->name('post.update');
+Route::get('/post/{id}/{category}', [PostController::class, 'getCategoryPost'])->name('post.getCategoryPost');
+Route::get('/post/{id}/{category}/{position}', [PostController::class, 'getPostOptional'])->name('post.getPostOptional');
+Route::post('/postStore', [PostController::class, 'store'])->name('postStore.store');
+Route::put('/postUpdate/{post}', [PostController::class, 'postUpdate'])->name('postUpdate.postUpdate');
+Route::delete('/postDelete/{post}', [PostController::class, 'postDelete'])->name('postDelete.postDelete');
 
 Route::get('/api/setPostApi', [ApiPostController::class, 'createPost']);
 Route::get('/api/getAllPost', [ApiPostController::class, 'getAllPost']);

@@ -56,7 +56,7 @@
         }
     </style>
 
-    <a href="../posts">Volver</a>
+    <a href="{{ route('posts.index') }}">Volver</a>
 
     <h1>Post - This is the post with id: {{ $id }}</h1>
 

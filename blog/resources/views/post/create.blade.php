@@ -40,7 +40,7 @@
             outline: none;
         }
 
-        .btn-primary {
+        .btn-primary, a {
             width: 100%;
             padding: 10px;
             background-color: #4CAF50;
@@ -70,8 +70,8 @@
     </div>
 
     <div class="container-form">
-        <a href="posts/">Volver</a>
-        <form action="postStore" method="POST">
+        <a href="{{ route('posts.index') }}">Volver</a>
+        <form action="{{ route('postStore.store') }}" method="POST">
 
             @csrf
 
