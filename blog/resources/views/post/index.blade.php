@@ -87,25 +87,28 @@
                 <th>Actions</th>
             </thead>
             <tbody>
-                    @foreach ($posts as $post)
-                        <tr>
-                            <td>{{ $post->id }}</td>
-                            <td><a href="post/{{$post->id}}">{{ $post->title }}</a></td>
-                            <td>{{ $post->content }}</td>
-                            <td>{{ $post->category }}</td>
-                            <td>{{ $post->published_at }}</td>
-                            <td>{{ $post->is_active ? 'SI' : 'NO' }}</td>
-                            <td>
-                                <a href="post/{{$post->id}}/edit">Edit</a>
-                                <form action="postDelete/{{$post->id}}" method="post">
-                                    @csrf
-                                    @method('Delete')
-                                    <button type="submit">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                @foreach ($posts as $post)
+                    <tr>
+                        <td>{{ $post->id }}</td>
+                        <td><a href="post/{{$post->id}}">{{ $post->title }}</a></td>
+                        <td>{{ $post->content }}</td>
+                        <td>{{ $post->category }}</td>
+                        <td>{{ $post->published_at }}</td>
+                        <td>{{ $post->is_active ? 'SI' : 'NO' }}</td>
+                        <td>
+                            <a href="post/{{$post->id}}/edit">Edit</a>
+                            <form action="postDelete/{{$post->id}}" method="post">
+                                @csrf
+                                @method('Delete')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
+
+        <!-- para paginacion  -->
+        {{ $posts->links() }}
     </div>
 </x-app-layout>
