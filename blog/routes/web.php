@@ -9,7 +9,16 @@ use App\Http\Controllers\UserController;
 Route::get('/', HomeController::class);
 Route::get('/laravel', [HomeController::class, 'indexLaravel']);
 
-Route::resource('user', UserController::class);
+Route::resource('usuarios', UserController::class)
+    ->parameters(['usuarios' => 'user'])
+    ->names('user');
+// Con esto de hace una excepción de rutas
+// ->except(['index', 'create', 'edit']);
+// o Para solo crear
+// ->only(['index', 'create']);
+
+// Para API solo se necesitan 4, para ello existe:
+Route::apiResource('user', UserController::class);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/postsPrueba', [PostController::class, 'indexPrueba'])->name('postsPrueba.indexPrueba');
