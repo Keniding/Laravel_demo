@@ -4,9 +4,12 @@ use App\Http\Controllers\ApiPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', HomeController::class);
 Route::get('/laravel', [HomeController::class, 'indexLaravel']);
+
+Route::resource('user', UserController::class);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/postsPrueba', [PostController::class, 'indexPrueba'])->name('postsPrueba.indexPrueba');
