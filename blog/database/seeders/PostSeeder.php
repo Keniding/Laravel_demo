@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
         $post->save();
 
         // Crear 10 publicaciones con valores aleatorios
-        Post::factory(10)->create();
+        Post::factory(100)->create();
 
         // Crear una publicación específica
         Post::factory()->create([

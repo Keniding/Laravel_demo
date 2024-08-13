@@ -12,6 +12,7 @@
             <thead>
                 <th>User ID</th>
                 <th>Name</th>
+                <th>Slug</th>
                 <th>Email</th>
                 <th>Pasword</th>
                 <th>Verification</th>
@@ -23,6 +24,7 @@
                         <td>{{ $user->id }}</td>
                         <!-- {{ route('user.show', $user->id) }} inferencia de identificador/biding -->
                         <td><a href=" {{ route('user.show', $user) }} ">{{ $user->name }}</a></td>
+                        <td>{{ $user->slug }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->password }}</td>
                         <td>{{ $user->email_verified_at }}</td>
