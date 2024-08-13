@@ -4,7 +4,8 @@
     <div class="container-edit">
     <a href="{{ route('user.index') }}">Volver</a>
         <h2>Edit Post</h2>
-        <form action="{{ route('user.update', $user->id) }}" method="POST">
+        <!-- {{ route('user.update', $user->id) }} -->
+        <form action="{{ route('user.update', $user) }}" method="POST">
             @csrf
             @method('PUT')
 
