@@ -21,13 +21,16 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td><a href=" {{ route('user.show', $user->id) }} ">{{ $user->name }}</a></td>
+                        <!-- {{ route('user.show', $user->id) }} inferencia de identificador/biding -->
+                        <td><a href=" {{ route('user.show', $user) }} ">{{ $user->name }}</a></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->password }}</td>
                         <td>{{ $user->email_verified_at }}</td>
                         <td>
-                            <a href="{{ route('user.edit', $user->id) }}">Edit</a>
-                            <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                        <!-- {{ route('user.edit', $user->id) }} inferencia de identificador/biding -->
+                            <a href="{{ route('user.edit', $user) }}">Edit</a>
+                            <!-- {{ route('user.destroy', $user->id) }} inferencia de identificador/biding -->
+                            <form action="{{ route('user.destroy', $user) }}" method="post">
                                 @csrf
                                 @method('Delete')
                                 <button type="submit">Delete</button>

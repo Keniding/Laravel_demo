@@ -3,7 +3,7 @@
 
     <a href="{{ route('user.index') }}">Volver</a>
 
-    <h1>Post - This is the user with id: {{ $id }}</h1>
+    <h1>Post - This is the user with id: {{$user->id}}</h1>
 
 
     <div class="contenido">

@@ -45,4 +45,12 @@ class Post extends Model
             get: fn ($value) => ucfirst($value)
         );
     }
+
+    // Binding para inferencia de nombre
+    // Por default en id porque es el identificador comun
+    // Util en caso no se usa la propiedad id
+    
+    // public function getRouteKeyName() {
+    //     return 'title';
+    // }
 }
