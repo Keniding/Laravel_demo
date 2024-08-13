@@ -23,11 +23,26 @@ class UserController extends Controller
         return view('user.create');
     }
 
+    public function createSlug($string, $id) {
+        $slug = str_replace(' ', '-', $string);
+        $slug = strtolower($slug);
+        $slug = preg_replace('/[^a-z0-9-]/', '', $slug);
+        $slug = preg_replace('/-+/', '-', $slug);
+        $slug = trim($slug, '-');
+        $slug = $slug . '-' . $id;
+        return $slug;
+    }
+
     public function store() {
         $user = new User();
         $user->name = request('name');
+        $user->slug = '';
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
+        $user->save();
+
+        // Slug intuitivo creado
+        $user->slug = $this->createSlug($user->name, $user->id);
         $user->save();
         return redirect()->route('user.index');
     }
